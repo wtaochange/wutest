@@ -79,5 +79,5 @@ done
 
 end=`date`
 # send email
-/bin/echo -e "start: "$start" \r\nend: "$end | /bin/mail -s "xen VM restore done" support@prodosec.com -- -f no-reply@prodosec.com
+/bin/echo -e "start: "$start" \r\nend: "$end | /bin/mail -s "xen VM restore done" support@wutest.com -- -f no-reply@wutest.com
 
