@@ -14,7 +14,7 @@ from XenBackup import XenBackup
 
 hostfqdn = "10.0.6.200"
 username = "root"
-password = "omega1"
+password = "haha"
 backuppath = "/xenimages"
 notifymail = "support@prodosec.com"
 vms = [] #all backup vm here
