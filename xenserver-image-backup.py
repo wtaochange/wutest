@@ -18,12 +18,12 @@ hostfqdn = "10.0.6.90"
 username = "root"
 password = "haha"
 backuppath = "/xenimages"
-notifymail = "support@prodosec.com"
+notifymail = "support@wutest.com"
 vms = [] #all backup vm here
 tag_label = sys.argv[1]
 #tag_label = "wutest" # match vm tags
 
-frommail = "no-reply@prodosec.com"
+frommail = "no-reply@wutest.com"
 logpath = "/var/xenbackup"
 
 
