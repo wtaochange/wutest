@@ -15,8 +15,8 @@ import multiprocessing
 from XenBackup import XenBackup
 
 hostfqdn = "10.0.6.90"
-username = "root"
-password = "haha"
+username = "user"
+password = "pass"
 backuppath = "/xenimages"
 notifymail = "support@wutest.com"
 vms = [] #all backup vm here
