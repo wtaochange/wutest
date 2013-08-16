@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+###########################################
+# Description:
+#   Backup vm  tags = backup
+############################################
+
+import sys, time
+import XenAPI
+import re
+import commands
+import os
+from XenBackup import XenBackup
+
+hostfqdn = "10.0.6.91"
+username = "root"
+password = "omega1"
+#backuppath = "/xenbackup/pbx/backup"
+backuppath = "/xenimages"
+notifymail = "support@prodosec.com"
+vms = [] #all backup vm here
+#tag_label = "pbx" # match vm tags
+tag_label = "wutest" # match vm tags
+#tag_label = "nas22" # match vm tags
+
+frommail = "no-reply@prodosec.com"
+logpath = "/var/xenbackup"
+
+# delete backup files 
+cmd = "/usr/bin/find " + backuppath + " -type f -mtime +0 -exec /bin/rm -v {} \\; "
+
+# clear log files
+#cmd = "/bin/rm -rf " + logpath + "/*"
+#commands.getstatusoutput(cmd)
+
+# put vm list in array vms
+url = "http://" + hostfqdn
+session = XenAPI.Session(url)
+session.xenapi.login_with_password(username, password)
+all = session.xenapi.VM.get_all()
+for vm in all:
+    record = session.xenapi.VM.get_record(vm)
+    if tag_label in record["tags"]:
+        #print "%s:tag:%s" % (record["name_label"], record["tags"])
+        vms.append(record["name_label"])
+session.xenapi.session.logout()
+
+#backup each single vm
+for i in range(0, len(vms)):
+    vm_label = vms[i]
+    try:
+        print "haha%s" % (vms[i])
+        backup1 = XenBackup(hostfqdn, username, password, vm_label, backuppath, frommail, notifymail, logpath, tag_label)
+    except Exception, e:
+        print "FATAL ERROR: " + str(e)
+

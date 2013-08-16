@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# delete from xencenter
+/usr/local/bin/python  /home/wu/delete-vm-all.py
+
+# cron job on 10.0.6.100 gonna work
