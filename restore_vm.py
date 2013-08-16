@@ -10,7 +10,7 @@ import XenAPI
 
 hostfqdn = "10.0.6.100"
 username = "root"
-password = "omega1"
+password = "haha"
 vms = [] #all backup vm here
 backup_path = "/xenbackup/pbx/backup"
 restore_path = "/xenbackup/pbx/restore"
